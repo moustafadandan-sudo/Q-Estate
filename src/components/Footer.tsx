@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 function LocationIcon() {
@@ -52,22 +53,6 @@ function WhatsAppIcon() {
   );
 }
 
-function MailIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      className="h-5 w-5 shrink-0"
-      aria-hidden="true"
-    >
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="m4 7 8 6 8-6" />
-    </svg>
-  );
-}
-
 function InstagramIcon() {
   return (
     <svg
@@ -116,19 +101,14 @@ export default function Footer() {
     <footer className="bg-slate-950 text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Link href="/" className="inline-flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500 text-lg font-black text-white shadow-lg shadow-cyan-500/20">
-              QE
-            </div>
-
-            <div>
-              <p className="text-2xl font-black tracking-tight">
-                Q <span className="text-cyan-400">Estate</span>
-              </p>
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
-                Qatar Real Estate
-              </p>
-            </div>
+          <Link href="/" className="inline-block">
+            <Image
+              src="/images/projects/logo/q-estate-logo.png"
+              alt="Q Estate"
+              width={220}
+              height={90}
+              className="h-auto w-48 object-contain"
+            />
           </Link>
 
           <p className="mt-6 max-w-sm leading-7 text-slate-400">
@@ -245,7 +225,6 @@ export default function Footer() {
               <WhatsAppIcon />
               <span>+974 3327 9898</span>
             </a>
-
           </div>
         </div>
       </div>
