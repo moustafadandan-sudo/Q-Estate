@@ -161,7 +161,7 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <a
-              href="https://wa.me/97400000000"
+              href="https://wa.me/97433279898"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-cyan-500 px-4 py-2.5 text-sm font-semibold text-cyan-600 transition duration-200 hover:bg-cyan-50"
@@ -171,7 +171,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="tel:+97400000000"
+              href="tel:+97433279898"
               className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition duration-200 hover:bg-cyan-600 hover:shadow-lg"
             >
               <PhoneIcon />
@@ -247,7 +247,7 @@ export default function Navbar() {
 
         <div className="space-y-3 border-t border-slate-200 p-6">
           <a
-            href="https://wa.me/97400000000"
+            href="https://wa.me/97433279898"
             target="_blank"
             rel="noopener noreferrer"
             className="flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-500 px-5 py-3.5 font-semibold text-cyan-600 transition hover:bg-cyan-50"
@@ -257,7 +257,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href="tel:+97400000000"
+            href="tel:+97433279898"
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3.5 font-semibold text-white transition hover:bg-cyan-600"
           >
             <PhoneIcon />
