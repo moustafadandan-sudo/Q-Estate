@@ -13,7 +13,7 @@ function LocationIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      className="h-5 w-5 shrink-0"
+      className="h-4 w-4 shrink-0"
       aria-hidden="true"
     >
       <path
@@ -33,7 +33,7 @@ function HomeIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      className="h-5 w-5 shrink-0 text-cyan-500"
+      className="h-4 w-4 shrink-0"
       aria-hidden="true"
     >
       <path
@@ -57,7 +57,7 @@ function CalendarIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      className="h-5 w-5 shrink-0 text-cyan-500"
+      className="h-4 w-4 shrink-0"
       aria-hidden="true"
     >
       <rect x="3" y="5" width="18" height="16" rx="2" />
@@ -65,6 +65,74 @@ function CalendarIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M8 3v4M16 3v4M3 10h18"
+      />
+    </svg>
+  );
+}
+
+function FurnitureIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      className="h-4 w-4 shrink-0"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 11a2 2 0 0 0-2 2v4h20v-4a2 2 0 0 0-4 0v1H6v-1a2 2 0 0 0-2-2Z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 17v2M20 17v2"
+      />
+    </svg>
+  );
+}
+
+function PaymentIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      className="h-4 w-4 shrink-0"
+      aria-hidden="true"
+    >
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 10h18M7 15h3"
+      />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      className="h-5 w-5 text-cyan-400 transition-all duration-300 group-hover/view-button:translate-x-1 group-hover/view-button:text-black"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 12h14M13 6l6 6-6 6"
       />
     </svg>
   );
@@ -90,6 +158,17 @@ function SearchIcon() {
   );
 }
 
+function getPaymentPlan(slug: string) {
+  const paymentPlans: Record<string, string> = {
+    "skala-villas": "8-Year Payment Plan",
+    "city-avenue": "7-Year Payment Plan",
+    "marina-44": "8-Year Payment Plan",
+    milos: "7-Year Payment Plan",
+  };
+
+  return paymentPlans[slug] || "Flexible Payment Plan";
+}
+
 export default function ProjectsPage() {
   const projects = useMemo(() => getFeaturedProjects(), []);
 
@@ -105,9 +184,7 @@ export default function ProjectsPage() {
 
   const propertyTypes = useMemo(() => {
     return [
-      ...new Set(
-        projects.flatMap((project) => project.propertyTypes)
-      ),
+      ...new Set(projects.flatMap((project) => project.propertyTypes)),
     ].sort();
   }, [projects]);
 
@@ -357,75 +434,92 @@ export default function ProjectsPage() {
 
       <section className="px-6 pb-20">
         {filteredProjects.length > 0 ? (
-          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mx-auto grid max-w-7xl gap-7 md:grid-cols-2 lg:grid-cols-4">
             {filteredProjects.map((project) => (
               <article
                 key={project.slug}
-                className="overflow-hidden rounded-3xl bg-white shadow-lg transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="group/card flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl"
               >
-                <div
-                  className="relative h-72 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url(${project.image})`,
-                  }}
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="relative block h-64 overflow-hidden"
                 >
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover/card:scale-105"
+                    style={{
+                      backgroundImage: `url(${project.image})`,
+                    }}
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+
                   {project.featured && (
-                    <div className="absolute left-5 top-5">
-                      <span className="rounded-full bg-cyan-500 px-4 py-2 text-xs font-semibold text-white shadow-md">
-                        Featured
-                      </span>
-                    </div>
+                    <span className="absolute left-5 top-5 rounded-full bg-cyan-500 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-lg">
+                      Featured
+                    </span>
                   )}
 
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent px-6 pb-5 pt-20">
-                    <div className="flex items-center gap-2 text-white">
+                  <div className="absolute inset-x-0 bottom-0 px-5 pb-5">
+                    <div className="flex items-center gap-2 text-sm font-medium text-white">
                       <LocationIcon />
-
-                      <span className="text-sm font-medium">
-                        {project.location}
-                      </span>
+                      <span>{project.location}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-slate-900">
-                    {project.name}
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-2xl font-bold leading-tight text-slate-900">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="transition hover:text-cyan-600"
+                    >
+                      {project.name}
+                    </Link>
                   </h3>
 
-                  <p className="mt-2 text-sm font-medium text-slate-500">
-                    By {project.developer}
+                  <p className="mt-4 text-sm font-medium text-slate-500">
+                    Starting from
                   </p>
 
-                  <p className="mt-4 text-xl font-bold text-slate-900">
-                    Starting from {project.price}
+                  <p className="mt-1 text-xl font-bold text-slate-900">
+                    {project.price}
                   </p>
 
-                  <div className="mt-6 space-y-4 border-t border-slate-200 pt-5">
+                  <div className="mt-5 grid grid-cols-1 gap-2">
+                    <div className="flex items-center gap-2 rounded-xl bg-cyan-50 px-3 py-2.5 text-sm font-semibold text-cyan-800">
+                      <FurnitureIcon />
+                      <span>Fully Furnished</span>
+                    </div>
+
+                    <div className="flex items-center gap-2 rounded-xl bg-cyan-50 px-3 py-2.5 text-sm font-semibold text-cyan-800">
+                      <PaymentIcon />
+                      <span>{getPaymentPlan(project.slug)}</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 space-y-3 border-t border-slate-200 pt-5">
                     <div className="flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2 text-slate-500">
                         <HomeIcon />
-
-                        <span className="font-semibold text-slate-800">
+                        <span className="text-sm font-medium">
                           Unit Types
                         </span>
                       </div>
 
-                      <span className="text-right text-sm text-slate-600">
+                      <span className="text-right text-sm font-semibold text-slate-800">
                         {project.type}
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2 text-slate-500">
                         <CalendarIcon />
-
-                        <span className="font-semibold text-slate-800">
+                        <span className="text-sm font-medium">
                           Handover
                         </span>
                       </div>
 
-                      <span className="text-right text-sm text-slate-600">
+                      <span className="text-right text-sm font-semibold text-slate-800">
                         {project.handover}
                       </span>
                     </div>
@@ -433,9 +527,10 @@ export default function ProjectsPage() {
 
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="mt-7 block w-full rounded-xl bg-cyan-500 px-5 py-3 text-center font-semibold text-white transition hover:bg-cyan-600"
+                    className="group/view-button mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-3.5 font-semibold text-white transition duration-300 hover:bg-cyan-500"
                   >
-                    View Details
+                    View Project
+                    <ArrowIcon />
                   </Link>
                 </div>
               </article>
