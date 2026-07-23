@@ -103,7 +103,7 @@ export default function Footer() {
         <div>
           <Link href="/" className="inline-block">
             <Image
-              src="/images/projects/logo/q-estate-logo.png"
+              src="/images/projects/logo/q-estate-logo-v2.png"
               alt="Q Estate"
               width={220}
               height={90}

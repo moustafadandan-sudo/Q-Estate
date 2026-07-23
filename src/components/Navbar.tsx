@@ -120,7 +120,7 @@ export default function Navbar() {
         >
           <Link href="/" className="flex shrink-0 items-center">
             <Image
-              src="/images/projects/logo/q-estate-logo.png"
+              src="/images/projects/logo/q-estate-logo-v2.png"
               alt="Q Estate"
               width={320}
               height={100}
@@ -206,7 +206,7 @@ export default function Navbar() {
       >
         <div className="flex h-20 items-center justify-between border-b border-slate-200 px-6">
           <Image
-            src="/images/projects/logo/q-estate-logo.png"
+            src="/images/projects/logo/q-estate-logo-v2.png"
             alt="Q Estate"
             width={260}
             height={80}
