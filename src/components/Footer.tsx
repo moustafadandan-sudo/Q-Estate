@@ -109,7 +109,7 @@ export default function Footer() {
 height={120}
 className="h-auto w-72 object-contain"
             />
-          </Linkgit status>
+          </Link>
 
           <p className="mt-6 max-w-sm leading-7 text-slate-400">
             Discover premium real estate opportunities across Qatar with
