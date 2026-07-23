@@ -105,11 +105,11 @@ export default function Footer() {
             <Image
               src="/images/projects/logo/q-estate-logo-v2.png"
               alt="Q Estate"
-              width={220}
-              height={90}
-              className="h-auto w-48 object-contain"
+             width={320}
+height={120}
+className="h-auto w-72 object-contain"
             />
-          </Link>
+          </Linkgit status>
 
           <p className="mt-6 max-w-sm leading-7 text-slate-400">
             Discover premium real estate opportunities across Qatar with
